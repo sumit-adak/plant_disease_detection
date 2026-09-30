@@ -1,428 +1,1099 @@
-/* Scoped styles for the Landing Page */
+/* Scoped styles for the PlantCare AI Landing Page */
 .landing-page {
-  font-family: 'Inter', sans-serif;
-  background-color: var(--bg-dark);
-  color: var(--text-main);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: #F8F9E9;
+  color: #234B2D;
   overflow-x: hidden;
   line-height: 1.6;
   width: 100%;
+  position: relative;
 }
 
-/* Navbar */
+/* ==========================================================================
+   1. FLOATING PILL NAVIGATION BAR
+   ========================================================================== */
 .landing-navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.15rem 2.85rem;
   position: fixed;
-  top: 24px;
+  top: 22px;
   left: 50%;
   transform: translateX(-50%);
-  width: min(94%, 1360px);
+  width: min(80%, 1240px);
+  height: 76px;
+  padding: 0 2.2rem;
   z-index: 100;
-  background: rgba(250, 249, 246, 0.84);
-  backdrop-filter: blur(22px) saturate(190%);
-  -webkit-backdrop-filter: blur(22px) saturate(190%);
-  border: 1px solid rgba(144, 169, 85, 0.28);
+  background: rgba(250, 249, 244, 0.88);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1.5px solid rgba(220, 236, 199, 0.75);
   border-radius: 9999px;
-  box-shadow: 0 16px 45px rgba(49, 87, 44, 0.08), inset 0 1px 1px rgba(255, 255, 255, 0.95);
+  box-shadow: 
+    0 12px 35px -8px rgba(35, 75, 45, 0.08),
+    0 4px 12px -2px rgba(0, 0, 0, 0.03),
+    inset 0 1.5px 2px rgba(255, 255, 255, 0.98);
   transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 .landing-navbar.scrolled {
-  background: rgba(250, 249, 246, 0.94);
-  backdrop-filter: blur(26px) saturate(200%);
-  -webkit-backdrop-filter: blur(26px) saturate(200%);
-  box-shadow: 0 16px 45px rgba(49, 87, 44, 0.1), inset 0 1px 1px rgba(255, 255, 255, 0.95);
-  border: 1px solid rgba(144, 169, 85, 0.35);
-  padding: 0.95rem 2.6rem;
-  width: min(96%, 1360px);
+  top: 14px;
+  width: min(84%, 1260px);
+  height: 70px;
+  background: rgba(250, 249, 244, 0.96);
+  border-color: rgba(144, 169, 85, 0.4);
+  box-shadow: 
+    0 16px 42px -6px rgba(35, 75, 45, 0.12),
+    0 6px 14px -3px rgba(0, 0, 0, 0.04),
+    inset 0 1.5px 2px rgba(255, 255, 255, 1);
 }
 
 .landing-logo {
   display: flex;
   align-items: center;
-  gap: 0.85rem;
-  font-family: 'Outfit', sans-serif;
-  font-weight: 800;
-  font-size: 1.65rem;
-  letter-spacing: -0.02em;
-  color: var(--kombu-green);
+  gap: 0.75rem;
   text-decoration: none;
+  cursor: pointer;
   flex-shrink: 0;
 }
 
-.landing-logo img {
-  width: 44px;
-  height: 44px;
-  object-fit: contain;
+.landing-logo-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #EAF3D5 0%, #D3E8C0 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #378F65;
+  box-shadow: 
+    inset 1.5px 1.5px 3px rgba(255, 255, 255, 0.9),
+    inset -1px -1px 2px rgba(35, 75, 45, 0.1),
+    0 4px 10px rgba(35, 75, 45, 0.08);
+}
+
+.landing-logo-text {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 800;
+  font-size: 1.45rem;
+  letter-spacing: -0.02em;
+  color: #234B2D;
 }
 
 .landing-nav-links {
   display: flex;
-  gap: 2.75rem;
   align-items: center;
+  gap: 2.6rem;
 }
 
 .landing-nav-links a {
   text-decoration: none;
-  color: var(--cafe-noir);
+  color: #4F6D4F;
   font-weight: 600;
-  font-size: 1.15rem;
+  font-size: 1.05rem;
   position: relative;
-  padding: 0.3rem 0;
-  transition: color 0.3s ease;
-}
-
-.landing-nav-links a::after {
-  content: '';
-  position: absolute;
-  width: 0;
-  height: 2.5px;
-  border-radius: 2px;
-  background: var(--moss-green);
-  bottom: -4px;
-  left: 0;
-  transition: width 0.3s ease;
+  padding: 0.35rem 0;
+  transition: color 0.25s ease;
 }
 
 .landing-nav-links a:hover {
-  color: var(--moss-green);
+  color: #234B2D;
 }
 
-.landing-nav-links a:hover::after {
+/* Features Active Underline */
+.landing-nav-links a.nav-link-active {
+  color: #234B2D;
+  font-weight: 700;
+}
+
+.landing-nav-links a.nav-link-active::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
   width: 100%;
+  height: 3px;
+  border-radius: 3px;
+  background: #378F65;
+  box-shadow: 0 1px 4px rgba(55, 143, 101, 0.35);
 }
 
 .landing-nav-actions {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 0.9rem;
 }
 
-.landing-nav-actions .landing-nav-btn {
-  border-radius: 9999px;
-  padding: 0.8rem 1.8rem;
-  font-size: 1.05rem;
-  font-weight: 600;
-}
-
-/* Buttons */
-.landing-page button {
+.nav-btn-signin {
   font-family: 'Inter', sans-serif;
   cursor: pointer;
-  border: none;
-  outline: none;
-  border-radius: 8px;
+  background: transparent;
+  color: #234B2D;
+  border: 1.5px solid rgba(84, 185, 129, 0.45);
+  border-radius: 9999px;
+  padding: 0.65rem 1.45rem;
+  font-size: 0.98rem;
   font-weight: 600;
-  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition: all 0.25s cubic-bezier(0.25, 0.8, 0.25, 1);
+  outline: none;
+}
+
+.nav-btn-signin:hover {
+  background: rgba(234, 243, 213, 0.5);
+  border-color: #378F65;
+  color: #1A3922;
+  transform: translateY(-1px);
+}
+
+.nav-btn-scan {
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+  background: linear-gradient(135deg, #2D6A4F 0%, #234B2D 100%);
+  color: #FFFFFF;
+  border: 1.5px solid rgba(255, 255, 255, 0.28);
+  border-radius: 9999px;
+  padding: 0.68rem 1.6rem;
+  font-size: 0.98rem;
+  font-weight: 600;
   display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  box-shadow: 
+    0 8px 18px -3px rgba(35, 75, 45, 0.3),
+    inset 1px 1px 2px rgba(255, 255, 255, 0.4);
+  transition: all 0.28s cubic-bezier(0.25, 0.8, 0.25, 1);
+  outline: none;
+}
+
+.nav-btn-scan:hover {
+  background: linear-gradient(135deg, #378F65 0%, #1E4226 100%);
+  transform: translateY(-2px);
+  box-shadow: 
+    0 12px 24px -4px rgba(35, 75, 45, 0.38),
+    inset 1px 1px 2px rgba(255, 255, 255, 0.5);
+}
+
+.nav-btn-scan .nav-arrow-icon {
+  transition: transform 0.25s ease;
+}
+
+.nav-btn-scan:hover .nav-arrow-icon {
+  transform: translateX(3px);
+}
+
+/* ==========================================================================
+   2. HERO SECTION DIMENSIONS & ATMOSPHERIC BACKGROUND
+   ========================================================================== */
+.landing-page .hero {
+  position: relative;
+  min-height: 100vh;
+  padding: 135px 4.5% 4rem;
+  background: linear-gradient(135deg, #F8F9E9 0%, #F3F7DF 38%, #EAF3D5 72%, #DCECC7 100%);
+  overflow: hidden;
+  display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.landing-btn-primary {
-  background-color: var(--moss-green);
-  color: #FAF9F6;
-  padding: 0.75rem 1.6rem;
-  font-size: 1rem;
-  box-shadow: 0 4px 15px rgba(64, 145, 108, 0.28);
+/* Subtle Organic Botanical Atmospheric Orbs */
+.hero-ambient-orb {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  filter: blur(75px);
 }
 
-.landing-btn-primary:hover {
-  background-color: var(--kombu-green);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(49, 87, 44, 0.35);
+.hero-ambient-orb.orb-tl {
+  top: -12%;
+  left: -8%;
+  width: 580px;
+  height: 580px;
+  background: radial-gradient(circle, rgba(211, 232, 192, 0.5) 0%, transparent 70%);
+  opacity: 0.7;
 }
 
-.landing-btn-secondary {
-  background-color: transparent;
-  color: var(--kombu-green);
-  border: 2px solid var(--kombu-green) !important;
-  padding: 0.7rem 1.5rem;
-  font-size: 1rem;
+.hero-ambient-orb.orb-br {
+  bottom: -15%;
+  right: -5%;
+  width: 650px;
+  height: 650px;
+  background: radial-gradient(circle, rgba(220, 236, 199, 0.55) 0%, transparent 70%);
+  opacity: 0.8;
 }
 
-.landing-btn-secondary:hover {
-  background-color: var(--kombu-green);
-  color: #FAF9F6;
-  transform: translateY(-2px);
+.hero-ambient-orb.orb-center {
+  top: 35%;
+  left: 45%;
+  width: 480px;
+  height: 480px;
+  background: radial-gradient(circle, rgba(243, 247, 223, 0.6) 0%, transparent 70%);
+  opacity: 0.6;
 }
 
-.landing-page .large {
-  padding: 0.9rem 1.8rem;
-  font-size: 1.05rem;
-  border-radius: 10px;
-}
-
-/* Hero Section */
-.landing-page .hero {
+/* Hero Two-Column Grid: Left ~42%, Right ~58% */
+.hero-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  min-height: 100vh;
-  padding: 155px 4% 4rem 5%;
-  background: linear-gradient(135deg, #FAF9F6 0%, #F5F9E8 45%, #EDF4A8 100%);
+  width: 100%;
+  max-width: 1540px;
+  margin: 0 auto;
+  gap: 2.75rem;
   position: relative;
-  overflow: hidden;
-  gap: 3rem;
+  z-index: 1;
 }
 
-@media (min-width: 1400px) {
-  .landing-page .hero {
-    padding: 160px 4% 4rem 6%;
-    gap: 3.5rem;
-  }
-}
-
-.landing-page .hero::before {
-  content: '';
-  position: absolute;
-  top: -20%;
-  right: -10%;
-  width: 700px;
-  height: 700px;
-  background: radial-gradient(circle, rgba(144, 169, 85, 0.35) 0%, transparent 70%);
-  opacity: 0.25;
-  border-radius: 50%;
-  filter: blur(60px);
-  z-index: 0;
-}
-
+/* ==========================================================================
+   3. LEFT COLUMN: HERO CONTENT (~42%)
+   ========================================================================== */
 .landing-page .hero-content {
-  flex: 1;
+  flex: 0 0 42%;
   max-width: 580px;
-  z-index: 1;
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  z-index: 2;
+}
+
+/* Top Pill Badge */
+.hero-badge-pill {
+  display: inline-flex;
   align-items: center;
-  text-align: center;
-  margin: 0 auto;
-}
-
-.landing-page .hero h1 {
-  font-family: 'Outfit', sans-serif;
-  font-size: clamp(2.4rem, 4.5vw + 0.5rem, 4.2rem);
-  font-weight: 800;
-  line-height: 1.18;
-  color: var(--kombu-green);
-  margin-bottom: 1.25rem;
-  letter-spacing: -0.02em;
-  text-align: center;
-}
-
-.landing-page .highlight {
-  color: var(--moss-green);
-  position: relative;
-  display: inline-block;
-}
-
-.landing-page .hero p {
-  font-size: clamp(1.05rem, 1.4vw + 0.4rem, 1.2rem);
-  color: var(--cafe-noir);
-  margin-bottom: 2rem;
-  max-width: 520px;
-  line-height: 1.6;
-  text-align: center;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.landing-page .hero-buttons {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-}
-
-/* Scanner Container - Centered / Shifted Left Towards Center */
-.landing-page .hero-image {
-  flex: 1.35;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  z-index: 1;
-  width: 100%;
-}
-
-.landing-page .image-wrapper.hero-scanner-card {
-  position: relative;
-  width: 100%;
-  max-width: 720px;
-  border-radius: 24px;
-  overflow: hidden;
-  box-shadow: 
-    0 25px 60px -10px rgba(64, 145, 108, 0.22),
-    0 12px 30px rgba(49, 87, 44, 0.08),
-    inset 0 1px 2px rgba(255, 255, 255, 0.95);
-  border: 8px solid rgba(250, 249, 246, 0.95);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  margin: 0 auto;
-  transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.5s ease;
-}
-
-.landing-page .image-wrapper.hero-scanner-card:hover {
-  transform: translateY(-4px) scale(1.01);
-  box-shadow: 
-    0 32px 75px -10px rgba(64, 145, 108, 0.28),
-    0 16px 36px rgba(49, 87, 44, 0.12);
-}
-
-.landing-page .image-wrapper.hero-scanner-card img {
-  width: 100%;
-  height: 500px;
-  object-fit: cover;
-  display: block;
-  transition: transform 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
-}
-
-.landing-page .image-wrapper.hero-scanner-card:hover img {
-  transform: scale(1.03);
-}
-
-.landing-page .scan-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(to bottom, transparent, rgba(64, 145, 108, 0.32), transparent);
-  animation: scan 2.8s infinite linear;
-  pointer-events: none;
-  border-top: 3px solid var(--moss-green);
-  box-shadow: 0 0 20px rgba(64, 145, 108, 0.6);
-  z-index: 3;
-}
-
-@keyframes scan {
-  0% { transform: translateY(-100%); }
-  100% { transform: translateY(100%); }
-}
-
-/* Hero Scanner HUD Overlays */
-.hero-hud-corners span {
-  position: absolute;
-  width: 28px;
-  height: 28px;
-  pointer-events: none;
-  z-index: 4;
-}
-
-.hero-hud-tl {
-  top: 14px;
-  left: 14px;
-  border-top: 3px solid #40916C;
-  border-left: 3px solid #40916C;
-  border-top-left-radius: 6px;
-}
-
-.hero-hud-tr {
-  top: 14px;
-  right: 14px;
-  border-top: 3px solid #40916C;
-  border-right: 3px solid #40916C;
-  border-top-right-radius: 6px;
-}
-
-.hero-hud-bl {
-  bottom: 14px;
-  left: 14px;
-  border-bottom: 3px solid #40916C;
-  border-left: 3px solid #40916C;
-  border-bottom-left-radius: 6px;
-}
-
-.hero-hud-br {
-  bottom: 14px;
-  right: 14px;
-  border-bottom: 3px solid #40916C;
-  border-right: 3px solid #40916C;
-  border-bottom-right-radius: 6px;
-}
-
-/* Floating Diagnosis Clay Badge */
-.hero-scanner-badge {
-  position: absolute;
-  bottom: 22px;
-  left: 22px;
-  background: var(--clay-bg-card, #F6F9F2);
-  border: 2px solid rgba(255, 255, 255, 0.95);
+  gap: 0.6rem;
+  background: #EAF3D5;
+  border: 1px solid rgba(84, 185, 129, 0.35);
   border-radius: 9999px;
-  padding: 0.65rem 1.25rem;
+  padding: 0.45rem 1.15rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 
+    0 4px 14px rgba(35, 75, 45, 0.05),
+    inset 0 1px 1.5px rgba(255, 255, 255, 0.95),
+    inset 0 -1px 2px rgba(35, 75, 45, 0.04);
+}
+
+.badge-pill-icon {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  z-index: 5;
-  box-shadow: 5px 8px 18px rgba(45, 65, 40, 0.15), inset 1.5px 1.5px 3px rgba(255, 255, 255, 0.95);
-  pointer-events: none;
+  justify-content: center;
+  color: #378F65;
 }
 
-.badge-pulse {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: #34d399;
-  box-shadow: 0 0 10px rgba(52, 211, 153, 0.8);
-  animation: pulseDot 2s infinite ease-in-out;
-  flex-shrink: 0;
+.badge-pill-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #234B2D;
+  letter-spacing: -0.01em;
 }
 
-@keyframes pulseDot {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.4; transform: scale(1.3); }
-}
-
-.badge-text {
+/* Hero Heading (Three Lines) */
+.hero-title {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 800;
+  font-size: clamp(2.9rem, 4.4vw, 4.3rem);
+  line-height: 1.12;
+  letter-spacing: -0.025em;
+  margin-bottom: 1.35rem;
   display: flex;
   flex-direction: column;
 }
 
-.badge-title {
-  color: var(--clay-text-primary, #20381E);
-  font-size: 0.88rem;
-  font-weight: 800;
+.hero-title .title-line {
+  display: block;
+}
+
+.title-line-1 {
+  color: #234B2D; /* Dark Forest Green */
+}
+
+.title-line-2 {
+  color: #378F65; /* Brighter Medium Green */
+}
+
+.title-line-3 {
+  color: #234B2D; /* Dark Forest Green */
+}
+
+/* Supporting Text */
+.hero-subtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.12rem;
+  line-height: 1.68;
+  color: #4F6D4F; /* Muted Dark Green */
+  max-width: 490px;
+  margin-bottom: 2.2rem;
+  font-weight: 500;
+}
+
+/* ==========================================================================
+   4. CTA BUTTONS (3D CLAYMORPHISM)
+   ========================================================================== */
+.hero-buttons {
+  display: flex;
+  gap: 1.25rem;
+  align-items: center;
+  margin-bottom: 2.75rem;
+  flex-wrap: wrap;
+}
+
+.clay-hero-btn {
+  font-family: 'Outfit', 'Inter', -apple-system, sans-serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  padding: 1.1rem 2.35rem;
+  border-radius: 9999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.28s cubic-bezier(0.25, 0.8, 0.25, 1);
+  user-select: none;
+  outline: none;
+  border: none;
+}
+
+/* Primary Button: Dark/Medium Green Pill */
+.clay-hero-btn-primary {
+  background: linear-gradient(145deg, #378F65 0%, #234B2D 100%);
+  color: #FFFFFF;
+  border: 2px solid rgba(255, 255, 255, 0.42);
+  box-shadow: 
+    0 16px 32px -4px rgba(35, 75, 45, 0.36),
+    0 6px 14px -2px rgba(0, 0, 0, 0.12),
+    -4px -4px 14px rgba(255, 255, 255, 0.85),
+    inset 3px 3px 6px rgba(255, 255, 255, 0.45),
+    inset -3px -3.5px 7px rgba(18, 48, 24, 0.42);
+  text-shadow: 0 1px 2px rgba(15, 38, 20, 0.35);
+}
+
+.clay-hero-btn-primary:hover {
+  transform: translateY(-3px) scale(1.02);
+  background: linear-gradient(145deg, #449B72 0%, #1E4226 100%);
+  border-color: rgba(255, 255, 255, 0.65);
+  box-shadow: 
+    0 22px 38px -4px rgba(35, 75, 45, 0.44),
+    0 8px 18px -2px rgba(0, 0, 0, 0.16),
+    -5px -5px 16px rgba(255, 255, 255, 0.95),
+    inset 3px 3px 6px rgba(255, 255, 255, 0.6),
+    inset -3.5px -3.5px 8px rgba(18, 48, 24, 0.48);
+}
+
+.clay-hero-btn-primary:active {
+  transform: translateY(2px) scale(0.98);
+  box-shadow: 
+    0 4px 10px rgba(35, 75, 45, 0.25),
+    inset 3px 4px 8px rgba(18, 48, 24, 0.55),
+    inset -2px -2px 5px rgba(255, 255, 255, 0.3);
+}
+
+.clay-hero-btn-primary .btn-camera-icon {
+  stroke-width: 2.2;
+}
+
+.clay-hero-btn-primary .hero-btn-icon {
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  stroke-width: 2.3;
+}
+
+.clay-hero-btn-primary:hover .hero-btn-icon {
+  transform: translateX(5px);
+}
+
+/* Secondary Button: Warm Ivory Pill */
+.clay-hero-btn-secondary {
+  background: linear-gradient(145deg, #FAFBF7 0%, #EEF4E8 100%);
+  color: #234B2D;
+  border: 2px solid rgba(84, 185, 129, 0.35);
+  box-shadow: 
+    0 14px 28px -4px rgba(45, 65, 40, 0.12),
+    0 5px 12px -2px rgba(0, 0, 0, 0.05),
+    -5px -5px 14px rgba(255, 255, 255, 0.98),
+    inset 3px 3px 6px rgba(255, 255, 255, 0.95),
+    inset -3px -3.5px 7px rgba(45, 65, 40, 0.08);
+}
+
+.clay-hero-btn-secondary:hover {
+  transform: translateY(-3px) scale(1.02);
+  background: linear-gradient(145deg, #FFFFFF 0%, #E6EFE1 100%);
+  color: #1A3922;
+  border-color: #54B981;
+  box-shadow: 
+    0 20px 36px -4px rgba(45, 65, 40, 0.16),
+    0 8px 16px -2px rgba(0, 0, 0, 0.07),
+    -6px -6px 18px rgba(255, 255, 255, 1),
+    inset 3.5px 3.5px 7px rgba(255, 255, 255, 1),
+    inset -3px -3.5px 8px rgba(45, 65, 40, 0.12);
+}
+
+.clay-hero-btn-secondary:active {
+  transform: translateY(2px) scale(0.98);
+  box-shadow: 
+    0 3px 8px rgba(45, 65, 40, 0.08),
+    inset 3px 4px 8px rgba(45, 65, 40, 0.15),
+    inset -2px -2px 5px rgba(255, 255, 255, 0.85);
+}
+
+/* ==========================================================================
+   5. FEATURE INDICATORS (BELOW CTA)
+   ========================================================================== */
+.hero-feature-indicators {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(144, 169, 85, 0.25);
+  width: 100%;
+  max-width: 530px;
+}
+
+.feature-indicator-item {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.indicator-icon-circle {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 
+    0 4px 10px rgba(35, 75, 45, 0.07),
+    inset 1px 1px 2px rgba(255, 255, 255, 0.95);
+}
+
+.icon-circle-leaf {
+  background: #EAF3D5;
+  color: #378F65;
+  border: 1px solid rgba(84, 185, 129, 0.3);
+}
+
+.icon-circle-zap {
+  background: #FDF4D8;
+  color: #D9822B;
+  border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.icon-circle-shield {
+  background: #E1EFEA;
+  color: #2D6A4F;
+  border: 1px solid rgba(45, 106, 79, 0.28);
+}
+
+.indicator-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.indicator-title {
   font-family: 'Outfit', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #234B2D;
   line-height: 1.2;
 }
 
-.badge-subtitle {
-  color: var(--clay-olive, #5A704D);
-  font-size: 0.74rem;
+.indicator-subtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #6F8E6F;
+  line-height: 1.2;
+}
+
+.indicator-separator {
+  width: 1px;
+  height: 28px;
+  background: rgba(144, 169, 85, 0.3);
+  flex-shrink: 0;
+}
+
+/* ==========================================================================
+   6. RIGHT COLUMN: LARGE SQUARE PLANT DISEASE SCANNER (~58%)
+   ========================================================================== */
+.hero-image-col {
+  flex: 0 0 58%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-scanner-stage {
+  position: relative;
+  width: 100%;
+  max-width: 660px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Outer Soft Pastel Green/Cream Organic Frame - Sized Prominently */
+.scanner-organic-frame {
+  position: relative;
+  width: 100%;
+  max-width: 580px;
+  padding: 15px;
+  background: linear-gradient(145deg, #FAFBF7 0%, #EAF3D5 100%);
+  border-radius: 46px;
+  border: 3.5px solid rgba(255, 255, 255, 0.98);
+  box-shadow: 
+    0 35px 80px -18px rgba(35, 75, 45, 0.22),
+    0 14px 32px -6px rgba(0, 0, 0, 0.07),
+    inset 0 2px 4px rgba(255, 255, 255, 0.98),
+    inset 0 -2px 6px rgba(35, 75, 45, 0.05);
+}
+
+/* Inner Square 1:1 Viewport */
+.scanner-square-viewport {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1; /* Strict 1:1 Square */
+  border-radius: 34px;
+  overflow: hidden;
+  background: #1B2E1E;
+}
+
+.scanner-square-viewport img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transform: scale(1.03);
+  transition: transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.scanner-organic-frame:hover .scanner-square-viewport img {
+  transform: scale(1.06);
+}
+
+/* Vignette Depth Overlay */
+.scanner-vignette-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, transparent 40%, rgba(20, 40, 24, 0.42) 100%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Animated Horizontal Scanning Beam */
+.scanner-scan-beam {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 3.5px;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(84, 185, 129, 0.4) 15%, 
+    #54B981 50%, 
+    rgba(84, 185, 129, 0.4) 85%, 
+    transparent 100%
+  );
+  box-shadow: 
+    0 0 20px 4px rgba(84, 185, 129, 0.9),
+    0 0 38px 9px rgba(84, 185, 129, 0.45);
+  animation: scanBeamLoop 3.4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  z-index: 4;
+  pointer-events: none;
+}
+
+@keyframes scanBeamLoop {
+  0% {
+    top: 2%;
+    opacity: 0;
+  }
+  12% {
+    opacity: 1;
+  }
+  88% {
+    opacity: 1;
+  }
+  100% {
+    top: 98%;
+    opacity: 0;
+  }
+}
+
+/* HUD Corner Brackets */
+.scanner-hud-reticles .reticle-bracket {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  border-color: #54B981;
+  border-style: solid;
+  pointer-events: none;
+  z-index: 3;
+  filter: drop-shadow(0 0 6px rgba(84, 185, 129, 0.7));
+  animation: reticlePulse 3s infinite ease-in-out;
+}
+
+@keyframes reticlePulse {
+  0%, 100% { opacity: 0.9; }
+  50% { opacity: 0.55; }
+}
+
+.reticle-bracket.top-left {
+  top: 20px;
+  left: 20px;
+  border-width: 4px 0 0 4px;
+  border-top-left-radius: 10px;
+}
+
+.reticle-bracket.top-right {
+  top: 20px;
+  right: 20px;
+  border-width: 4px 4px 0 0;
+  border-top-right-radius: 10px;
+}
+
+.reticle-bracket.bottom-left {
+  bottom: 20px;
+  left: 20px;
+  border-width: 0 0 4px 4px;
+  border-bottom-left-radius: 10px;
+}
+
+.reticle-bracket.bottom-right {
+  bottom: 20px;
+  right: 20px;
+  border-width: 0 4px 4px 0;
+  border-bottom-right-radius: 10px;
+}
+
+/* ==========================================================================
+   7. FLOATING DIAGNOSTIC CLAY CARDS
+   ========================================================================== */
+.scanner-floating-card {
+  position: absolute;
+  z-index: 6;
+  background: rgba(250, 251, 247, 0.95);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1.5px solid rgba(255, 255, 255, 0.98);
+  border-radius: 20px;
+  box-shadow: 
+    0 14px 30px -6px rgba(35, 75, 45, 0.14),
+    0 5px 12px -2px rgba(0, 0, 0, 0.04),
+    inset 0 1.5px 2px rgba(255, 255, 255, 1),
+    inset 0 -1.5px 3px rgba(35, 75, 45, 0.04);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.scanner-floating-card:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 
+    0 20px 38px -6px rgba(35, 75, 45, 0.2),
+    0 8px 16px -2px rgba(0, 0, 0, 0.06),
+    inset 0 1.5px 2px rgba(255, 255, 255, 1);
+}
+
+/* Floating Animations */
+.float-anim-1 {
+  animation: floatGentle1 4.5s ease-in-out infinite;
+}
+
+.float-anim-2 {
+  animation: floatGentle2 5.2s ease-in-out infinite;
+}
+
+.float-anim-3 {
+  animation: floatGentle3 4.8s ease-in-out infinite;
+}
+
+.float-anim-4 {
+  animation: floatGentle4 5.5s ease-in-out infinite;
+}
+
+@keyframes floatGentle1 {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-7px); }
+}
+
+@keyframes floatGentle2 {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-9px); }
+}
+
+@keyframes floatGentle3 {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+@keyframes floatGentle4 {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+/* Card 1: Scanner Status Card (Top-Left) */
+.card-status {
+  top: -24px;
+  left: -25px;
+  padding: 0.82rem 1.35rem;
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  border-radius: 9999px;
+}
+
+.card-status-icon-wrap {
+  position: relative;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: #EAF3D5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #378F65;
+}
+
+.pulse-radar-dot {
+  position: absolute;
+  top: 1px;
+  right: 1px;
+  width: 8px;
+  height: 8px;
+  background: #34D399;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #34D399;
+  animation: pulseDot 1.8s infinite ease-in-out;
+}
+
+.card-status-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-status-title-row {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.card-status-title {
+  font-family: 'Outfit', sans-serif;
   font-weight: 700;
+  font-size: 0.98rem;
+  color: #234B2D;
 }
 
-@media (max-width: 1024px) {
-  .landing-page .hero {
-    flex-direction: column;
-    padding: 120px 5% 4rem;
-    gap: 2.5rem;
-    text-align: center;
-  }
-  .landing-page .hero-content {
-    max-width: 100%;
-  }
-  .landing-page .hero-buttons {
-    justify-content: center;
-  }
-  .landing-page .hero-image {
-    justify-content: center;
-  }
-  .landing-page .image-wrapper.hero-scanner-card {
-    max-width: 100%;
-    margin: 0 auto;
-  }
-  .landing-page .image-wrapper.hero-scanner-card img {
-    height: 380px;
-  }
+.scan-wave-bars {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 2.5px;
+  height: 12px;
 }
 
-@media (max-width: 640px) {
-  .landing-page .image-wrapper.hero-scanner-card img {
-    height: 280px;
-  }
+.scan-wave-bars i {
+  width: 2.5px;
+  height: 100%;
+  background: #378F65;
+  border-radius: 2px;
+  animation: barWave 1.2s infinite ease-in-out alternate;
+}
+
+.scan-wave-bars i:nth-child(2) {
+  animation-delay: 0.3s;
+}
+
+.scan-wave-bars i:nth-child(3) {
+  animation-delay: 0.6s;
+}
+
+@keyframes barWave {
+  0% { height: 4px; }
+  100% { height: 12px; }
+}
+
+.card-status-sub {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8rem;
+  color: #6F8E6F;
+  font-weight: 500;
+}
+
+/* Card 2: Diagnosis Card (Top-Right) */
+.card-diagnosis {
+  top: 36px;
+  right: -45px;
+  padding: 0.95rem 1.25rem;
+  min-width: 205px;
+}
+
+.card-diagnosis-tag-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.card-diagnosis-tag {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.74rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #D9822B;
+  background: #FEF3C7;
+  padding: 0.2rem 0.55rem;
+  border-radius: 6px;
+}
+
+.card-diagnosis-alert-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #F59E0B;
+  box-shadow: 0 0 6px rgba(245, 158, 11, 0.8);
+}
+
+.card-diagnosis-body {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.card-diagnosis-thumb {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid rgba(144, 169, 85, 0.3);
+  flex-shrink: 0;
+}
+
+.card-diagnosis-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card-diagnosis-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.disease-title {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 800;
+  font-size: 1.08rem;
+  color: #234B2D;
+  line-height: 1.15;
+}
+
+.disease-type {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.75rem;
+  color: #6F8E6F;
+  font-weight: 600;
+}
+
+.card-diagnosis-arrow {
+  margin-left: auto;
+  color: #378F65;
+}
+
+/* Card 3: Confidence Card (Middle-Right) */
+.card-confidence {
+  top: 220px;
+  right: -48px;
+  padding: 0.85rem 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.95rem;
+}
+
+.confidence-gauge-wrap {
+  position: relative;
+  width: 54px;
+  height: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.confidence-svg {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.confidence-svg-bg {
+  fill: none;
+  stroke: #EAF3D5;
+  stroke-width: 5.5;
+}
+
+.confidence-svg-ring {
+  fill: none;
+  stroke: #54B981;
+  stroke-width: 5.5;
+  stroke-linecap: round;
+  stroke-dasharray: 163.36;
+  stroke-dashoffset: 13.07;
+  filter: drop-shadow(0 0 3px rgba(84, 185, 129, 0.4));
+  transition: stroke-dashoffset 1.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.confidence-val {
+  position: absolute;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 800;
+  font-size: 0.94rem;
+  color: #234B2D;
+}
+
+.confidence-label-wrap {
+  display: flex;
+  flex-direction: column;
+}
+
+.confidence-text-main {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 800;
+  font-size: 1.05rem;
+  color: #234B2D;
+  line-height: 1.15;
+}
+
+.confidence-text-sub {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.75rem;
+  color: #6F8E6F;
+  font-weight: 600;
+}
+
+/* Card 4: Recommended Action Card (Bottom-Right) */
+.card-action {
+  bottom: -28px;
+  right: -20px;
+  padding: 0.95rem 1.35rem;
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  max-width: 350px;
+}
+
+.card-action-icon-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #EAF3D5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #378F65;
+  flex-shrink: 0;
+  border: 1px solid rgba(84, 185, 129, 0.35);
+}
+
+.card-action-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-action-badge {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.76rem;
+  font-weight: 800;
+  color: #378F65;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 2px;
+}
+
+.card-action-desc {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: #234B2D;
+  line-height: 1.38;
+  margin: 0;
+}
+
+/* ==========================================================================
+   8. RIGHT-SIDE HANDWRITTEN DETAIL & BOTANICAL DECORATIONS
+   ========================================================================== */
+.handwritten-brand-note {
+  position: absolute;
+  bottom: -72px;
+  right: -5px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'Caveat', cursive, sans-serif;
+  font-size: 1.68rem;
+  font-weight: 700;
+  color: #378F65;
+  transform: rotate(-3deg);
+  pointer-events: none;
+  user-select: none;
+  z-index: 5;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.9);
+}
+
+.note-leaf-icon {
+  color: #54B981;
+  transform: rotate(15deg);
+}
+
+/* Botanical Ornaments */
+.scanner-botanical-decorations {
+  position: absolute;
+  inset: -30px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.botanical-leaf-decor {
+  position: absolute;
+}
+
+.leaf-decor-1 {
+  top: -24px;
+  right: 18%;
+  width: 44px;
+  height: 44px;
+  transform: rotate(25deg);
+}
+
+.leaf-decor-2 {
+  bottom: -15px;
+  left: 8%;
+  width: 36px;
+  height: 36px;
+  transform: rotate(-40deg);
+}
+
+.botanical-halo-ring {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.halo-1 {
+  top: 10%;
+  right: -25px;
+  width: 180px;
+  height: 180px;
+  border: 1.5px dashed rgba(84, 185, 129, 0.22);
+}
+
+.halo-2 {
+  bottom: 5%;
+  left: -20px;
+  width: 140px;
+  height: 140px;
+  border: 1.5px dashed rgba(144, 169, 85, 0.2);
 }
 
 /* Features Section — Claymorphic Surface */
@@ -658,48 +1329,207 @@
 }
 
 /* Responsive Media Queries */
-@media (max-width: 992px) {
-  .landing-page .hero {
-    flex-direction: column;
-    text-align: center;
-    padding-top: 145px;
+@media (max-width: 1024px) {
+  .landing-navbar {
+    width: 90%;
+    padding: 0 1.5rem;
+    height: 70px;
+  }
+  
+  .landing-nav-links {
+    gap: 1.6rem;
+  }
+  
+  .hero-container {
+    gap: 2rem;
+  }
+  
+  .scanner-organic-frame {
+    max-width: 490px;
   }
 
-  .landing-navbar {
-    padding: 0.95rem 2rem;
+  .card-diagnosis {
+    right: -25px;
   }
-  
-  .landing-page .hero p {
-    margin: 0 auto 2rem auto;
+
+  .card-confidence {
+    right: -30px;
   }
-  
-  .landing-page .hero-buttons {
+}
+
+@media (max-width: 992px) {
+  .landing-page .hero {
+    padding: 135px 5% 4rem;
+  }
+
+  .hero-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 2.2rem;
+  }
+
+  /* Exact required stack order on mobile:
+     1. navbar (fixed)
+     2. heading & badge
+     3. description
+     4. CTA buttons
+     5. scanner (square 1:1)
+     6. feature indicators */
+  .landing-page .hero-content {
+    display: contents;
+  }
+
+  .hero-badge-pill {
+    order: 1;
+    margin: 0 auto 1.25rem auto;
+  }
+
+  .hero-title {
+    order: 2;
+    text-align: center;
+    align-items: center;
+  }
+
+  .hero-subtitle {
+    order: 3;
+    text-align: center;
+    margin: 0 auto 1.75rem auto;
+  }
+
+  .hero-buttons {
+    order: 4;
     justify-content: center;
+    margin-bottom: 2.5rem;
   }
-  
-  .landing-page .hero-image {
-    margin-top: 2rem;
+
+  .hero-image-col {
+    order: 5;
+    width: 100%;
+    max-width: 520px;
+    margin: 0 auto;
+  }
+
+  .hero-feature-indicators {
+    order: 6;
+    justify-content: center;
+    margin: 2rem auto 0 auto;
+    border-top: 1px solid rgba(144, 169, 85, 0.25);
+    padding-top: 1.5rem;
+    width: 100%;
+    max-width: 530px;
+  }
+
+  .scanner-organic-frame {
+    width: 100%;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  /* Strict Square 1:1 on Mobile */
+  .scanner-square-viewport {
+    aspect-ratio: 1 / 1 !important;
+    width: 100%;
+  }
+
+  .handwritten-brand-note {
+    position: static;
+    margin: 1.5rem auto 0 auto;
+    display: flex;
+    justify-content: center;
   }
 }
 
 @media (max-width: 768px) {
   .landing-navbar {
     top: 14px;
-    padding: 0.85rem 1.6rem;
+    padding: 0 1.2rem;
     width: 94%;
+    height: 66px;
   }
 
-  .landing-logo {
-    font-size: 1.4rem;
+  .landing-logo-text {
+    font-size: 1.25rem;
   }
 
-  .landing-logo img {
-    width: 38px;
-    height: 38px;
+  .landing-logo-icon {
+    width: 34px;
+    height: 34px;
   }
   
   .landing-nav-links {
     display: none;
+  }
+
+  .nav-btn-signin {
+    padding: 0.55rem 1.1rem;
+    font-size: 0.9rem;
+  }
+
+  .nav-btn-scan {
+    padding: 0.58rem 1.25rem;
+    font-size: 0.9rem;
+  }
+
+  .hero-title {
+    font-size: clamp(2.4rem, 7vw, 3.2rem);
+  }
+
+  .scanner-organic-frame {
+    max-width: 380px;
+    padding: 10px;
+    border-radius: 34px;
+  }
+
+  .scanner-square-viewport {
+    border-radius: 26px;
+  }
+
+  /* Smart Card Adaptations on Mobile */
+  .card-status {
+    top: -14px;
+    left: -12px;
+    padding: 0.55rem 0.95rem;
+    gap: 0.6rem;
+  }
+  .card-status-title {
+    font-size: 0.85rem;
+  }
+  .card-status-sub {
+    font-size: 0.72rem;
+  }
+
+  .card-diagnosis {
+    top: 15px;
+    right: -15px;
+    padding: 0.65rem 0.9rem;
+    min-width: 165px;
+  }
+  .disease-title {
+    font-size: 0.95rem;
+  }
+
+  .card-confidence {
+    top: auto;
+    bottom: 35px;
+    right: -15px;
+    padding: 0.55rem 0.85rem;
+  }
+  .confidence-gauge-wrap {
+    width: 44px;
+    height: 44px;
+  }
+  .confidence-val {
+    font-size: 0.82rem;
+  }
+
+  .card-action {
+    position: static;
+    margin: 1.25rem auto 0 auto;
+    width: 100%;
+    max-width: 380px;
+    justify-content: flex-start;
   }
   
   .landing-page .step {
@@ -717,21 +1547,59 @@
 }
 
 @media (max-width: 480px) {
-  .landing-logo span {
-    font-size: 1.2rem;
+  .landing-navbar {
+    height: 60px;
+    padding: 0 0.9rem;
   }
-  
-  .landing-btn-primary, .landing-btn-secondary {
-    padding: 0.65rem 1.25rem;
-    font-size: 0.95rem;
+
+  .landing-logo-text {
+    font-size: 1.1rem;
   }
-  
-  .landing-page .hero-buttons {
+
+  .nav-btn-signin {
+    display: none; /* Keep clean on small mobile */
+  }
+
+  .nav-btn-scan {
+    padding: 0.52rem 1.05rem;
+    font-size: 0.85rem;
+  }
+
+  .hero-buttons {
     flex-direction: column;
     width: 100%;
+    gap: 0.9rem;
   }
   
-  .landing-page .hero-buttons button {
+  .clay-hero-btn {
     width: 100%;
+    padding: 1rem 1.6rem;
+    font-size: 1.05rem;
+  }
+
+  .hero-feature-indicators {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .indicator-separator {
+    display: none;
+  }
+
+  .scanner-organic-frame {
+    max-width: 320px;
+  }
+
+  .card-status {
+    left: -5px;
+  }
+
+  .card-diagnosis {
+    right: -5px;
+  }
+
+  .card-confidence {
+    right: -5px;
   }
 }
