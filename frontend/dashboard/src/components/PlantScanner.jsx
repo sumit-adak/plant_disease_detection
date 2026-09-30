@@ -119,7 +119,7 @@ const SAMPLE_LEAVES = [
 ];
 
 const PlantScanner = ({ setActiveTab }) => {
-  const { isLoggedIn, remainingTrials, canPerformDiagnosis, useTrialScan } = useAuth();
+  const { isLoggedIn, remainingTrials, canPerformDiagnosis, consumeTrialScan } = useAuth();
 
   // Mode: 'camera' | 'upload'
   const [activeMode, setActiveMode] = useState('upload');
@@ -282,7 +282,7 @@ const PlantScanner = ({ setActiveTab }) => {
       return;
     }
 
-    const allowed = useTrialScan();
+    const allowed = consumeTrialScan();
     if (!allowed) {
       setShowTrialModal(true);
       return;

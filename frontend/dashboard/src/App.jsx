@@ -12,6 +12,8 @@ import LandingPage from './pages/LandingPage';
 import AuthPage from './pages/AuthPage';
 import { AuthProvider } from './context/AuthContext';
 
+import './styles/account.css';
+
 function DashboardContent() {
   const [activeTab, setActiveTab] = useState('dashboard');
 
@@ -36,8 +38,10 @@ function DashboardContent() {
     }
   };
 
+  const isClayActive = ['account', 'trackers', 'scheduler'].includes(activeTab);
+
   return (
-    <div className="app-container">
+    <div className={`app-container ${isClayActive ? 'clay-account-active' : ''}`}>
       <Sidebar activeTab={activeTab} setActiveTab={setActiveTab} />
       <main className="main-content">
         {renderContent()}

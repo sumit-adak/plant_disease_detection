@@ -1,279 +1,652 @@
-/* Scheduler Styles */
-.scheduler-container {
+/* ==========================================================================
+   PlantCare AI — Premium Soft Claymorphism UI for Farm Scheduler & Operations
+   Theme: Handcrafted pastel clay surfaces for agricultural planning & operations
+   Palette: Sage green, Soft mint, Pale pistachio, Warm cream, Powder blue, Pale peach
+   ========================================================================== */
+
+/* Main Container & Canvas */
+.scheduler-container.clay-scheduler-wrapper {
   flex: 1;
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  height: 100%;
+  position: relative;
+  background: transparent;
+  color: var(--clay-text-primary);
   min-height: 0;
-  background-color: var(--bg-dark);
 }
 
-.scheduler-content {
-  flex: 1;
-  padding: 1.5rem 2.5rem;
-  overflow-y: auto;
+/* Ambient Canvas Active */
+.clay-account-active .scheduler-container.clay-scheduler-wrapper {
+  background: transparent !important;
+}
+
+/* Interactive 7-Day Mini Calendar Strip */
+.clay-week-strip-card {
+  padding: 1.25rem 1.75rem;
   display: flex;
-  gap: 1.5rem;
   flex-direction: column;
-  min-height: 0;
-  -webkit-overflow-scrolling: touch;
+  gap: 1.15rem;
+  background: var(--clay-bg-card);
+  border: var(--clay-border-card);
+  box-shadow: var(--clay-shadow-card);
+  border-radius: var(--clay-radius-lg);
 }
 
-@media (min-width: 1024px) {
-  .scheduler-content {
-    flex-direction: row;
-    align-items: flex-start;
+.clay-week-strip-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.clay-week-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--clay-text-primary);
+}
+
+.clay-week-title svg {
+  color: var(--clay-olive);
+}
+
+.clay-week-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.clay-nav-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--clay-bg-elevated);
+  border: 1.5px solid rgba(255, 255, 255, 0.95);
+  box-shadow: var(--clay-shadow-circle);
+  color: var(--clay-text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.clay-nav-btn:hover {
+  transform: scale(1.08);
+  background: var(--clay-pistachio);
+}
+
+/* 7-Day Grid */
+.clay-week-days-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.85rem;
+}
+
+@media (max-width: 768px) {
+  .clay-week-days-grid {
+    grid-template-columns: repeat(4, 1fr);
   }
 }
 
-.card-panel {
-  background: rgba(255, 255, 255, 0.72);
-  border: 1px solid var(--glass-border);
-  border-radius: 1.25rem;
-  padding: 1.75rem;
-  backdrop-filter: var(--glass-blur);
-  -webkit-backdrop-filter: var(--glass-blur);
-  box-shadow: var(--glass-shadow), var(--glass-inner-glow);
-  transition: all 0.3s ease;
+.clay-day-cell {
+  background: var(--clay-bg-elevated);
+  border-radius: var(--clay-radius-md);
+  padding: 0.85rem 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  box-shadow: var(--clay-shadow-pill);
+  border: 1.5px solid rgba(255, 255, 255, 0.9);
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.25, 0.8, 0.25, 1);
+  outline: none;
 }
 
-.card-panel h3 {
-  margin-bottom: 1.25rem;
-  color: var(--kombu-green);
-  font-family: 'Outfit', sans-serif;
-  font-size: 1.25rem;
+.clay-day-cell:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: var(--clay-shadow-pill-active);
+  background: #FFFFFF;
 }
 
-/* Add Task Form */
-.scheduler-add-task {
+.clay-day-cell.is-today {
+  border-color: var(--clay-sage) !important;
+  background: var(--clay-mint-soft);
+}
+
+.clay-day-cell.is-selected {
+  background: var(--clay-pistachio) !important;
+  border-color: rgba(255, 255, 255, 0.98) !important;
+  box-shadow: var(--clay-shadow-pill-active) !important;
+  transform: translateY(-3px);
+}
+
+.clay-day-name {
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: var(--clay-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.clay-day-num {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--clay-text-primary);
+}
+
+.clay-day-indicator-wrap {
+  margin-top: 0.15rem;
+}
+
+.clay-day-dot {
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.1rem 0.45rem;
+  border-radius: var(--clay-radius-pill);
+}
+
+.clay-day-dot.pending {
+  background: var(--clay-olive);
+  color: #FFFFFF;
+  box-shadow: inset 1px 1px 2px rgba(255, 255, 255, 0.4);
+}
+
+.clay-day-dot.done {
+  background: var(--clay-mint);
+  color: var(--clay-olive);
+}
+
+.clay-day-dot.empty {
+  color: var(--clay-text-muted);
+}
+
+.clay-filter-active-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--clay-bg-inset);
+  padding: 0.65rem 1.15rem;
+  border-radius: var(--clay-radius-pill);
+  font-size: 0.85rem;
+  color: var(--clay-text-secondary);
+  box-shadow: var(--clay-shadow-inset);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+.clay-filter-active-bar strong {
+  color: var(--clay-text-primary);
+}
+
+.clay-filter-active-bar button {
+  background: transparent;
+  border: none;
+  color: var(--clay-olive);
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: underline;
+  font-size: 0.82rem;
+}
+
+/* ==========================================================================
+   Main Scheduler Layout
+   ========================================================================== */
+.clay-scheduler-layout {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
   width: 100%;
 }
 
-@media (min-width: 1024px) {
-  .scheduler-add-task {
-    width: 360px;
-    flex-shrink: 0;
+@media (max-width: 1024px) {
+  .clay-scheduler-layout {
+    flex-direction: column;
   }
 }
 
-.scheduler-form {
+/* Left Column: Add Task */
+.clay-add-task-card {
+  width: 380px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.35rem;
+}
+
+@media (max-width: 1024px) {
+  .clay-add-task-card {
+    width: 100%;
+  }
+}
+
+/* Quick Agronomy Templates Box */
+.clay-templates-box {
+  background: #FAF8F2;
+  border-radius: var(--clay-radius-md);
+  padding: 0.85rem 1rem;
+  border: 1px solid rgba(232, 168, 84, 0.25);
+  box-shadow: var(--clay-shadow-inset);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.clay-templates-label {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #8C6521;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.clay-templates-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.clay-template-pill {
+  background: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  box-shadow: var(--clay-shadow-pill);
+  border-radius: var(--clay-radius-pill);
+  padding: 0.45rem 0.85rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--clay-text-primary);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: left;
+}
+
+.clay-template-pill:hover {
+  transform: translateX(3px);
+  background: var(--clay-pistachio);
+  color: var(--clay-text-primary);
+}
+
+/* Task Form */
+.clay-task-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+}
+
+.clay-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.85rem;
+}
+
+@media (max-width: 480px) {
+  .clay-form-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==========================================================================
+   Right Column: Tasks List & Filter Bar
+   ========================================================================== */
+.clay-tasks-list-col {
+  flex: 1;
+  min-width: 0;
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
 }
 
-.form-group {
+/* Filter Bar Card */
+.clay-filter-bar-card {
+  padding: 1.15rem 1.45rem;
   display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  min-width: 0;
-}
-
-.form-group label {
-  font-size: 0.875rem;
-  color: var(--text-muted);
-  font-weight: 500;
-}
-
-.form-group input,
-.form-group select {
-  background: rgba(255, 255, 255, 0.7);
-  border: 1px solid var(--glass-border);
-  border-radius: 0.65rem;
-  padding: 0.75rem;
-  color: var(--text-main);
-  font-family: 'Inter', sans-serif;
-  outline: none;
-  width: 100%;
-  font-size: 0.95rem;
-  backdrop-filter: var(--glass-blur-sm);
-  -webkit-backdrop-filter: var(--glass-blur-sm);
-  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.02);
-  transition: all 0.2s ease;
-}
-
-.form-group input:focus,
-.form-group select:focus {
-  background: rgba(255, 255, 255, 0.95);
-  border-color: var(--primary);
-  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.15), inset 0 1px 2px rgba(0, 0, 0, 0.02);
-}
-
-.form-row {
-  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
   gap: 1rem;
 }
 
-.form-row .form-group {
-  flex: 1;
-}
-
-@media (max-width: 480px) {
-  .form-row {
-    flex-direction: column;
-    gap: 0.75rem;
-  }
-}
-
-.input-with-icon {
-  position: relative;
+.clay-status-pills {
   display: flex;
   align-items: center;
-  width: 100%;
+  gap: 0.45rem;
+  flex-wrap: wrap;
 }
 
-.input-with-icon svg {
-  position: absolute;
-  left: 0.75rem;
-  color: var(--text-muted);
-  pointer-events: none;
-  flex-shrink: 0;
+.clay-status-pill {
+  background: var(--clay-bg-inset);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: var(--clay-shadow-inset);
+  border-radius: var(--clay-radius-pill);
+  padding: 0.45rem 0.85rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--clay-text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
-.input-with-icon input {
-  padding-left: 2.25rem;
+.clay-status-pill:hover {
+  color: var(--clay-text-primary);
 }
 
-.add-task-btn {
-  margin-top: 0.25rem;
-  width: 100%;
+.clay-status-pill.active {
+  background: var(--clay-bg-elevated);
+  border-color: rgba(255, 255, 255, 0.95);
+  box-shadow: var(--clay-shadow-pill);
+  color: var(--clay-text-primary);
+}
+
+.clay-pill-count {
+  background: var(--clay-mint-soft);
+  color: var(--clay-olive);
+  font-size: 0.72rem;
+  padding: 0.1rem 0.45rem;
+  border-radius: var(--clay-radius-pill);
+}
+
+.clay-filter-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  flex-wrap: wrap;
+}
+
+.clay-select-sm {
+  padding: 0.5rem 0.85rem;
+  font-size: 0.82rem;
+  min-width: 140px;
+}
+
+.clay-search-sm {
+  padding: 0.4rem 0.85rem;
+  min-width: 180px;
+}
+
+/* Tasks Container */
+.clay-tasks-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+/* Task Item Card */
+.clay-task-card {
+  padding: 1.15rem 1.45rem;
+  display: flex;
+  align-items: center;
+  gap: 1.15rem;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.25, 0.8, 0.25, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.clay-task-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--clay-shadow-card-elevated);
+  border-color: rgba(255, 255, 255, 0.98);
+}
+
+.clay-task-card.completed {
+  opacity: 0.75;
+  background: #F0F4EC;
+}
+
+.clay-task-card.overdue {
+  border-left: 5px solid #C7524A;
+}
+
+/* Checkbox */
+.clay-task-checkbox {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--clay-bg-inset);
+  border: 2px solid rgba(143, 166, 131, 0.45);
+  box-shadow: var(--clay-shadow-inset);
+  display: flex;
+  align-items: center;
   justify-content: center;
+  flex-shrink: 0;
+  color: #FFFFFF;
+  transition: all 0.2s ease;
 }
 
-/* Task List */
-.scheduler-task-list {
+.clay-task-checkbox.checked {
+  background: var(--clay-olive);
+  border-color: var(--clay-olive);
+  box-shadow: var(--clay-shadow-circle);
+}
+
+/* Category Badge */
+.clay-task-cat-badge {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: var(--clay-shadow-circle);
+  border: 1.5px solid rgba(255, 255, 255, 0.95);
+}
+
+.clay-task-cat-badge.cat-irrigation {
+  background: #D8E8F5;
+  color: #2F6690;
+}
+
+.clay-task-cat-badge.cat-pesticide {
+  background: #F7D7D4;
+  color: #C7524A;
+}
+
+.clay-task-cat-badge.cat-fertilizer {
+  background: #C8DEC3;
+  color: #3B5A33;
+}
+
+.clay-task-cat-badge.cat-pruning {
+  background: #DFEAD6;
+  color: #556E51;
+}
+
+.clay-task-cat-badge.cat-inspection {
+  background: #FCECD5;
+  color: #8C6521;
+}
+
+/* Main Details */
+.clay-task-main {
   flex: 1;
   min-width: 0;
   display: flex;
   flex-direction: column;
+  gap: 0.35rem;
 }
 
-.tasks-wrapper {
+.clay-task-title-row {
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
   gap: 0.75rem;
 }
 
-.task-item {
-  display: flex;
-  align-items: center;
-  gap: 0.85rem;
-  background: rgba(255, 255, 255, 0.65);
-  padding: 0.95rem 1.15rem;
-  border-radius: 0.85rem;
-  border: 1px solid var(--glass-border);
-  backdrop-filter: var(--glass-blur-sm);
-  -webkit-backdrop-filter: var(--glass-blur-sm);
-  cursor: pointer;
-  transition: all 0.25s cubic-bezier(0.25, 0.8, 0.25, 1);
-  min-width: 0;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02), inset 0 1px 1px rgba(255, 255, 255, 0.9);
+.clay-task-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--clay-text-primary);
+  line-height: 1.35;
 }
 
-.task-item:hover {
-  background: rgba(255, 255, 255, 0.9);
-  border-color: rgba(16, 185, 129, 0.4);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(16, 185, 129, 0.12), inset 0 1px 1px #FFFFFF;
-}
-
-.task-checkbox {
-  width: 22px;
-  height: 22px;
-  border-radius: 50%;
-  border: 2px solid var(--border-color);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  color: white;
-  transition: all 0.2s;
-}
-
-.task-item.completed .task-checkbox {
-  background-color: var(--primary);
-  border-color: var(--primary);
-}
-
-.task-details {
-  flex: 1;
-  min-width: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-}
-
-.task-text {
-  font-weight: 500;
-  color: var(--text-main);
-  transition: color 0.2s;
-  word-break: break-word;
-  overflow-wrap: break-word;
-  font-size: 0.95rem;
-}
-
-.task-item.completed .task-text {
-  color: var(--text-muted);
+.clay-task-card.completed .clay-task-title {
   text-decoration: line-through;
+  color: var(--clay-text-muted);
 }
 
-.task-meta {
+.clay-priority-tag {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  padding: 0.2rem 0.65rem;
+  border-radius: var(--clay-radius-pill);
+  flex-shrink: 0;
+}
+
+.clay-priority-tag.priority-urgent {
+  background: #F7D7D4;
+  color: #C7524A;
+  border: 1px solid rgba(199, 82, 74, 0.25);
+}
+
+.clay-priority-tag.priority-high {
+  background: #FCECD5;
+  color: #9E6B1F;
+}
+
+.clay-priority-tag.priority-medium {
+  background: #DFEAD6;
+  color: #4C6B43;
+}
+
+.clay-priority-tag.priority-normal {
+  background: var(--clay-bg-subtle);
+  color: var(--clay-text-secondary);
+}
+
+.clay-task-notes {
+  font-size: 0.84rem;
+  color: var(--clay-text-secondary);
+  line-height: 1.45;
+}
+
+.clay-task-meta-row {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
   gap: 0.5rem 0.85rem;
-  font-size: 0.75rem;
-  color: var(--text-muted);
+  margin-top: 0.2rem;
 }
 
-.task-meta span {
-  display: flex;
+.clay-meta-chip {
+  display: inline-flex;
   align-items: center;
-  gap: 0.25rem;
-}
-
-.overdue-badge {
-  background-color: rgba(239, 68, 68, 0.1);
-  color: #ef4444 !important;
-  padding: 0.125rem 0.375rem;
-  border-radius: 1rem;
+  gap: 0.35rem;
+  font-size: 0.76rem;
   font-weight: 600;
-  font-size: 0.65rem;
+  color: var(--clay-text-muted);
 }
 
-.task-item.overdue {
-  border-left: 3px solid #ef4444;
+.clay-meta-chip.today-chip {
+  color: var(--clay-olive);
+  font-weight: 700;
 }
 
-.task-item.completed.overdue {
-  border-left: 1px solid var(--border-color);
+.clay-meta-chip.recurrence-chip {
+  background: var(--clay-bg-subtle);
+  padding: 0.15rem 0.5rem;
+  border-radius: var(--clay-radius-pill);
+  color: var(--clay-text-secondary);
 }
 
-.delete-task-btn {
+.clay-meta-chip.overdue-chip {
+  background: #F7D7D4;
+  color: #C7524A;
+  padding: 0.15rem 0.55rem;
+  border-radius: var(--clay-radius-pill);
+  font-weight: 700;
+}
+
+/* Delete Button */
+.clay-delete-task-btn {
   background: transparent;
   border: none;
-  color: var(--text-muted);
+  color: var(--clay-text-muted);
   cursor: pointer;
   padding: 0.5rem;
-  border-radius: 0.5rem;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.2s;
+  transition: all 0.2s ease;
   flex-shrink: 0;
 }
 
-.delete-task-btn:hover {
-  background-color: rgba(239, 68, 68, 0.1);
-  color: #ef4444;
+.clay-delete-task-btn:hover {
+  background: #F7D7D4;
+  color: #C7524A;
+  transform: scale(1.1);
 }
 
-@media (max-width: 768px) {
-  .scheduler-content {
-    padding: 1rem 1.25rem;
-    gap: 1rem;
-  }
-  .card-panel {
-    padding: 1.25rem;
-  }
+/* Empty Tasks View */
+.clay-empty-tasks {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 3.5rem 2rem;
+  gap: 0.75rem;
+}
+
+.clay-empty-icon {
+  color: var(--clay-sage-light);
+}
+
+.clay-empty-tasks h4 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--clay-text-primary);
+}
+
+.clay-empty-tasks p {
+  font-size: 0.88rem;
+  color: var(--clay-text-muted);
+  max-width: 380px;
+}
+
+/* Schedule Advisory Card */
+.clay-schedule-advisory {
+  background: #F6F9F2;
+  border: 1px solid rgba(143, 166, 131, 0.25);
+  border-radius: var(--clay-radius-md);
+  padding: 1rem 1.25rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  box-shadow: var(--clay-shadow-pill);
+}
+
+.clay-schedule-advisory .clay-advisory-icon {
+  color: var(--clay-olive);
+  margin-top: 0.15rem;
+}
+
+.clay-schedule-advisory h5 {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--clay-text-primary);
+  margin-bottom: 0.2rem;
+}
+
+.clay-schedule-advisory p {
+  font-size: 0.82rem;
+  color: var(--clay-text-secondary);
+  line-height: 1.45;
 }

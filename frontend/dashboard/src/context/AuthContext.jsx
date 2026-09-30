@@ -110,7 +110,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   // Free trial consumption
-  const useTrialScan = () => {
+  const consumeTrialScan = () => {
     if (isLoggedIn) return true; // Logged-in users have unlimited scans
     if (trialCount < 1) {
       const nextCount = trialCount + 1;
@@ -135,7 +135,8 @@ export const AuthProvider = ({ children }) => {
       login,
       signup,
       logout,
-      useTrialScan
+      consumeTrialScan,
+      useTrialScan: consumeTrialScan
     }}>
       {children}
     </AuthContext.Provider>
