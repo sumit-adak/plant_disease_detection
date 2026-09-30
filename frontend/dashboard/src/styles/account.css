@@ -1460,3 +1460,103 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* ==========================================================================
+   Mobile & Tablet Navigation Shell for .clay-account-active
+   ========================================================================== */
+@media (max-width: 900px) {
+  .app-container.clay-account-active {
+    flex-direction: column !important;
+    height: 100vh !important;
+    height: 100dvh !important;
+    overflow: hidden !important;
+  }
+
+  .clay-account-active .sidebar {
+    width: 100% !important;
+    height: auto !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    padding: 0.5rem 0.85rem !important;
+    border-right: none !important;
+    border-bottom: 1.5px solid rgba(255, 255, 255, 0.85) !important;
+    border-radius: 0 0 20px 20px !important;
+    box-shadow: 0 4px 18px rgba(45, 65, 40, 0.08) !important;
+    gap: 0.5rem !important;
+    z-index: 50 !important;
+    flex-shrink: 0 !important;
+  }
+
+  .clay-account-active .sidebar-header {
+    margin-bottom: 0 !important;
+    padding: 0 !important;
+  }
+
+  .clay-account-active .sidebar-header h2 {
+    display: none !important;
+  }
+
+  .clay-account-active .sidebar-logo-clay-circle {
+    width: 36px !important;
+    height: 36px !important;
+  }
+
+  .clay-account-active .sidebar-nav {
+    flex-direction: row !important;
+    gap: 0.35rem !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: none !important;
+    flex: 1 !important;
+    justify-content: flex-start !important;
+    padding: 0.2rem 0.35rem !important;
+  }
+
+  .clay-account-active .sidebar-nav::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  .clay-account-active .sidebar-nav .nav-item {
+    padding: 0.45rem 0.75rem !important;
+    font-size: 0.82rem !important;
+    white-space: nowrap !important;
+    transform: none !important;
+    flex-shrink: 0 !important;
+  }
+
+  .clay-account-active .sidebar-nav .nav-item:hover,
+  .clay-account-active .sidebar-nav .nav-item.active {
+    transform: none !important;
+  }
+
+  .clay-account-active .weather-widget {
+    display: none !important;
+  }
+
+  .clay-account-active .sidebar-user-card {
+    display: none !important;
+  }
+
+  .clay-account-active .sidebar-footer {
+    display: none !important;
+  }
+
+  .clay-account-active .main-content {
+    flex: 1 !important;
+    overflow: hidden !important;
+    height: calc(100vh - 60px) !important;
+    height: calc(100dvh - 60px) !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .clay-account-active .sidebar {
+    padding: 0.4rem 0.65rem !important;
+  }
+
+  .clay-account-active .sidebar-nav .nav-item {
+    padding: 0.4rem 0.55rem !important;
+    font-size: 0.78rem !important;
+  }
+}

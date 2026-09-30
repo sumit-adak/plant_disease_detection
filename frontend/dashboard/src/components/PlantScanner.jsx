@@ -1,8 +1,9 @@
+
 import React, { useState, useRef, useEffect } from 'react';
 import { 
   Camera, Upload, Sparkles, RefreshCw, CheckCircle2, 
   AlertTriangle, AlertCircle, ShieldAlert, Leaf, MessageSquare, Download, 
-  SwitchCamera, Zap, Info, ArrowRight, Lock, X, FileCheck
+  SwitchCamera, Zap, Info, ArrowRight, Lock, X, FileCheck, ScanLine
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { predictPlantDisease } from '../services/predictApi';
@@ -450,56 +451,42 @@ const PlantScanner = ({ setActiveTab }) => {
   };
 
   return (
-    <section id="scanner-section" className="tab-content active" style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
+    <section id="scanner-section" className="scanner-page-container clay-scanner-wrapper">
       {/* Hidden canvas for snapshot capture */}
       <canvas ref={canvasRef} style={{ display: 'none' }} />
 
-      {/* Header Bar */}
-      <header className="content-header" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '1rem' }}>
-        <div>
-          <h1>AI Leaf Disease Scanner</h1>
-          <p>Click a live photo or upload an image to identify crop infections with 99%+ accuracy.</p>
+      {/* Clay Header Banner */}
+      <header className="clay-scanner-header">
+        <div className="clay-scanner-header-left">
+          <div className="clay-scanner-badge-title">
+            <ScanLine size={13} />
+            <span>Real-Time Convolutional Pathology</span>
+          </div>
+          <div className="clay-scanner-title-row">
+            <h1>AI Leaf Disease Scanner</h1>
+          </div>
+          <p className="clay-scanner-subtitle">
+            Capture a live leaf photo or upload an image to identify crop pathogens, lesion severity, and prescription plans.
+          </p>
         </div>
 
         {/* Free trial / Pro badge */}
-        <div>
+        <div className="clay-scanner-header-right">
           {!isLoggedIn ? (
-            <div style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '0.5rem',
-              padding: '0.4rem 0.85rem',
-              background: remainingTrials > 0 ? 'rgba(136, 144, 99, 0.25)' : 'rgba(239, 68, 68, 0.15)',
-              border: `1px solid ${remainingTrials > 0 ? 'var(--moss-green)' : '#ef4444'}`,
-              borderRadius: '999px',
-              fontSize: '0.82rem',
-              fontWeight: 600,
-              color: remainingTrials > 0 ? 'var(--kombu-green)' : '#dc2626'
-            }}>
+            <div className={`clay-trial-status-badge ${remainingTrials > 0 ? 'available' : 'used'}`}>
               {remainingTrials > 0 ? (
                 <>
-                  <Sparkles size={14} /> Free Scan Available
+                  <Sparkles size={14} /> <span>{remainingTrials} Free Scans Available</span>
                 </>
               ) : (
                 <>
-                  <Lock size={14} /> Free Scan Used — Log in for Unlimited
+                  <Lock size={14} /> <span>Free Scans Used — Log in for Unlimited</span>
                 </>
               )}
             </div>
           ) : (
-            <div style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '0.5rem',
-              padding: '0.4rem 0.85rem',
-              background: 'rgba(53, 64, 36, 0.15)',
-              border: '1px solid var(--kombu-green)',
-              borderRadius: '999px',
-              fontSize: '0.82rem',
-              fontWeight: 600,
-              color: 'var(--kombu-green)'
-            }}>
-              <Zap size={14} /> Instant Neural Engine Active
+            <div className="clay-trial-status-badge pro">
+              <Zap size={14} /> <span>Instant Neural Engine Active</span>
             </div>
           )}
         </div>

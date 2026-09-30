@@ -38,10 +38,8 @@ function DashboardContent() {
     }
   };
 
-  const isClayActive = ['account', 'trackers', 'scheduler'].includes(activeTab);
-
   return (
-    <div className={`app-container ${isClayActive ? 'clay-account-active' : ''}`}>
+    <div className="app-container clay-account-active">
       <Sidebar activeTab={activeTab} setActiveTab={setActiveTab} />
       <main className="main-content">
         {renderContent()}

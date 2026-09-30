@@ -343,31 +343,29 @@
   border-bottom-right-radius: 6px;
 }
 
-/* Floating Diagnosis Glass Badge */
+/* Floating Diagnosis Clay Badge */
 .hero-scanner-badge {
   position: absolute;
   bottom: 22px;
   left: 22px;
-  background: rgba(49, 87, 44, 0.88);
-  border: 1px solid rgba(236, 243, 158, 0.4);
-  backdrop-filter: blur(14px) saturate(180%);
-  -webkit-backdrop-filter: blur(14px) saturate(180%);
-  border-radius: 14px;
-  padding: 0.65rem 1.1rem;
+  background: var(--clay-bg-card, #F6F9F2);
+  border: 2px solid rgba(255, 255, 255, 0.95);
+  border-radius: 9999px;
+  padding: 0.65rem 1.25rem;
   display: flex;
   align-items: center;
   gap: 0.75rem;
   z-index: 5;
-  box-shadow: 0 10px 25px rgba(49, 87, 44, 0.35);
+  box-shadow: 5px 8px 18px rgba(45, 65, 40, 0.15), inset 1.5px 1.5px 3px rgba(255, 255, 255, 0.95);
   pointer-events: none;
 }
 
 .badge-pulse {
-  width: 10px;
-  height: 10px;
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
-  background: #ECF39E;
-  box-shadow: 0 0 10px #ECF39E;
+  background: #34d399;
+  box-shadow: 0 0 10px rgba(52, 211, 153, 0.8);
   animation: pulseDot 2s infinite ease-in-out;
   flex-shrink: 0;
 }
@@ -383,17 +381,17 @@
 }
 
 .badge-title {
-  color: #FAF9F6;
-  font-size: 0.85rem;
-  font-weight: 700;
+  color: var(--clay-text-primary, #20381E);
+  font-size: 0.88rem;
+  font-weight: 800;
   font-family: 'Outfit', sans-serif;
   line-height: 1.2;
 }
 
 .badge-subtitle {
-  color: #ECF39E;
-  font-size: 0.72rem;
-  font-weight: 500;
+  color: var(--clay-olive, #5A704D);
+  font-size: 0.74rem;
+  font-weight: 700;
 }
 
 @media (max-width: 1024px) {
@@ -427,10 +425,10 @@
   }
 }
 
-/* Features */
+/* Features Section — Claymorphic Surface */
 .landing-page .features {
-  padding: 6rem 5%;
-  background-color: var(--bone);
+  padding: 6.5rem 5%;
+  background-color: var(--clay-bg-canvas, #EEF3EB);
   text-align: center;
   position: relative;
 }
@@ -442,7 +440,7 @@
   left: 0;
   width: 100%;
   height: 80px;
-  background: linear-gradient(to bottom, transparent, var(--tan));
+  background: linear-gradient(to bottom, transparent, rgba(200, 222, 195, 0.25));
   pointer-events: none;
 }
 
@@ -450,78 +448,71 @@
   font-family: 'Outfit', sans-serif;
   font-size: clamp(2rem, 3.5vw + 0.5rem, 2.75rem);
   margin-bottom: 3.5rem;
-  color: var(--kombu-green);
+  color: var(--clay-text-primary, #20381E);
   line-height: 1.25;
+  font-weight: 800;
 }
 
 .landing-page .feature-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
   gap: 2rem;
   max-width: 1200px;
   margin: 0 auto;
 }
 
+/* Molded Clay Feature Card */
 .landing-page .feature-card {
-  background: rgba(250, 249, 246, 0.85);
-  padding: 2.5rem 1.75rem;
-  border-radius: 20px;
-  border: 1px solid rgba(144, 169, 85, 0.28);
-  backdrop-filter: blur(16px) saturate(180%);
-  -webkit-backdrop-filter: blur(16px) saturate(180%);
-  box-shadow: 0 8px 30px rgba(49, 87, 44, 0.05), inset 0 1px 1px rgba(255, 255, 255, 0.95);
-  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  background: var(--clay-bg-card, #F6F9F2);
+  padding: 2.5rem 2rem;
+  border-radius: var(--clay-radius-lg, 28px);
+  border: 2px solid rgba(255, 255, 255, 0.95);
+  box-shadow: 
+    7px 11px 24px rgba(45, 65, 40, 0.08),
+    -5px -5px 16px rgba(255, 255, 255, 0.95),
+    inset 2px 2px 4px rgba(255, 255, 255, 0.85);
+  transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
   position: relative;
   overflow: hidden;
   text-align: left;
 }
 
-.landing-page .feature-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(135deg, rgba(236, 243, 158, 0.35) 0%, rgba(250, 249, 246, 0) 100%);
-  opacity: 0;
-  transition: opacity 0.4s ease;
-}
-
 .landing-page .feature-card:hover {
   transform: translateY(-8px);
-  background: rgba(250, 249, 246, 0.96);
-  box-shadow: 0 18px 40px rgba(64, 145, 108, 0.16), inset 0 1px 1px #FAF9F6;
-  border-color: rgba(64, 145, 108, 0.5);
-}
-
-.landing-page .feature-card:hover::before {
-  opacity: 1;
+  background: var(--clay-bg-elevated, #FAFBF7);
+  box-shadow: 
+    10px 18px 34px rgba(45, 65, 40, 0.14),
+    -6px -6px 20px rgba(255, 255, 255, 0.98),
+    inset 2.5px 2.5px 5px rgba(255, 255, 255, 0.9);
 }
 
 .landing-page .feature-card svg {
-  color: #31572C;
+  color: var(--clay-olive, #5A704D);
   margin-bottom: 1.25rem;
-  background: #ECF39E;
-  padding: 10px;
-  border-radius: 12px;
+  background: var(--clay-pistachio, #DFEAD6);
+  padding: 12px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.95);
+  box-shadow: var(--clay-shadow-circle, 4px 6px 14px rgba(45, 65, 40, 0.08));
 }
 
 .landing-page .feature-card h3 {
   font-family: 'Outfit', sans-serif;
   font-size: 1.35rem;
+  font-weight: 800;
   margin-bottom: 0.75rem;
-  color: var(--kombu-green);
+  color: var(--clay-text-primary, #20381E);
 }
 
 .landing-page .feature-card p {
-  color: var(--cafe-noir);
-  font-size: 1rem;
+  color: var(--clay-text-secondary, #556E51);
+  font-size: 0.96rem;
   line-height: 1.55;
 }
 
+/* How It Works — Clay Steps */
 .landing-page .how-it-works {
-  padding: 6rem 5%;
+  padding: 6.5rem 5%;
   background-color: transparent;
   position: relative;
 }
@@ -540,58 +531,62 @@
 .landing-page .step {
   display: flex;
   align-items: center;
-  gap: 1.75rem;
-  background: rgba(250, 249, 246, 0.85);
-  padding: 1.75rem 2rem;
-  border-radius: 20px;
-  border: 1px solid rgba(144, 169, 85, 0.28);
-  backdrop-filter: blur(16px) saturate(180%);
-  -webkit-backdrop-filter: blur(16px) saturate(180%);
-  box-shadow: 0 8px 30px rgba(49, 87, 44, 0.04), inset 0 1px 1px rgba(255, 255, 255, 0.95);
-  transition: all 0.3s ease;
+  gap: 2rem;
+  background: var(--clay-bg-card, #F6F9F2);
+  padding: 2rem 2.25rem;
+  border-radius: var(--clay-radius-lg, 28px);
+  border: 2px solid rgba(255, 255, 255, 0.95);
+  box-shadow: 
+    7px 11px 24px rgba(45, 65, 40, 0.07),
+    -5px -5px 16px rgba(255, 255, 255, 0.95),
+    inset 2px 2px 4px rgba(255, 255, 255, 0.85);
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .landing-page .step:hover {
-  background: rgba(250, 249, 246, 0.95);
-  transform: translateY(-3px);
-  border-color: rgba(64, 145, 108, 0.45);
-  box-shadow: 0 14px 35px rgba(64, 145, 108, 0.12);
+  transform: translateY(-4px);
+  box-shadow: 
+    10px 16px 32px rgba(45, 65, 40, 0.12),
+    -6px -6px 20px rgba(255, 255, 255, 0.98);
 }
 
 .landing-page .step-number {
   font-family: 'Outfit', sans-serif;
-  font-size: 2.25rem;
+  font-size: 2rem;
   font-weight: 800;
-  color: #ECF39E;
-  background: #31572C;
-  width: 64px;
-  height: 64px;
+  color: var(--clay-olive, #5A704D);
+  background: var(--clay-pistachio, #DFEAD6);
+  width: 68px;
+  height: 68px;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
   flex-shrink: 0;
+  border: 2px solid rgba(255, 255, 255, 0.95);
+  box-shadow: var(--clay-shadow-circle, 4px 6px 14px rgba(45, 65, 40, 0.08));
 }
 
 .landing-page .step h3 {
   font-family: 'Outfit', sans-serif;
   font-size: 1.35rem;
-  color: var(--kombu-green);
+  font-weight: 800;
+  color: var(--clay-text-primary, #20381E);
   margin-bottom: 0.35rem;
 }
 
 .landing-page .step p {
-  color: var(--cafe-noir);
-  font-size: 1rem;
+  color: var(--clay-text-secondary, #556E51);
+  font-size: 0.98rem;
   line-height: 1.55;
 }
 
 /* CTA */
 .landing-page .cta-section {
-  padding: 6rem 5%;
-  background: linear-gradient(135deg, #31572C 0%, #1e381b 100%);
+  padding: 6.5rem 5%;
+  background: linear-gradient(135deg, #2a4725 0%, #1e381b 100%);
   text-align: center;
-  color: #FAF9F6;
+  color: #FAFBF7;
   position: relative;
   overflow: hidden;
 }

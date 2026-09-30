@@ -1,0 +1,623 @@
+/* ==========================================================================
+   PlantCare AI — Premium Soft Claymorphism UI for Agronomic Reports & Certificates
+   Theme: Official certified agronomic pathology sheets in soft pastel molded clay
+   Palette: Forest green, Sage, Soft mint, Cream, Pistachio, Powder blue, Warm ivory
+   ========================================================================== */
+
+.reports-container.clay-reports-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  height: 100%;
+  position: relative;
+  background: transparent;
+  color: var(--clay-text-primary);
+  min-height: 0;
+}
+
+/* Clay Header Banner */
+.clay-reports-header {
+  padding: 1.5rem 2.25rem;
+  background: var(--clay-bg-card);
+  border-bottom: var(--clay-border-card);
+  box-shadow: 0 4px 18px rgba(45, 65, 40, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  z-index: 5;
+}
+
+.clay-reports-header-left {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.clay-reports-badge-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.3rem 0.85rem;
+  background: var(--clay-mint);
+  border: 1.5px solid rgba(255, 255, 255, 0.9);
+  box-shadow: var(--clay-shadow-button-sm);
+  border-radius: var(--clay-radius-pill);
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #1b6330;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  width: fit-content;
+}
+
+.clay-reports-title-row h1 {
+  font-size: 1.65rem;
+  font-weight: 800;
+  color: var(--clay-text-primary);
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.clay-reports-subtitle {
+  font-size: 0.88rem;
+  color: var(--clay-text-secondary);
+  margin: 0;
+}
+
+.clay-reports-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+/* Scrollable Container */
+.clay-reports-scroll-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1.5rem 2.25rem 3rem;
+}
+
+/* 2-Column Reports Master-Detail Layout */
+.clay-reports-workspace {
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  gap: 1.75rem;
+  align-items: start;
+}
+
+/* Sidebar List of Reports */
+.clay-reports-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.clay-reports-sidebar-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--clay-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  padding: 0 0.25rem;
+}
+
+.clay-reports-search-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.clay-reports-search-box svg {
+  position: absolute;
+  left: 1rem;
+  color: var(--clay-text-muted);
+  pointer-events: none;
+}
+
+.clay-reports-search-input {
+  width: 100%;
+  padding: 0.65rem 1rem 0.65rem 2.6rem;
+  border-radius: var(--clay-radius-pill);
+  background: var(--clay-bg-inset);
+  border: 1.5px solid rgba(143, 166, 131, 0.25);
+  box-shadow: var(--clay-shadow-inset);
+  color: var(--clay-text-primary);
+  font-size: 0.85rem;
+  font-family: inherit;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.clay-reports-search-input:focus {
+  background: #ffffff;
+  border-color: var(--clay-sage);
+}
+
+.clay-reports-list-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  max-height: calc(100vh - 280px);
+  overflow-y: auto;
+  padding-right: 0.25rem;
+}
+
+/* Report Mini Card */
+.clay-report-mini-card {
+  padding: 0.9rem 1.1rem;
+  border-radius: var(--clay-radius-md);
+  background: var(--clay-bg-card);
+  border: var(--clay-border-card);
+  box-shadow: var(--clay-shadow-card);
+  cursor: pointer;
+  transition: all 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  position: relative;
+}
+
+.clay-report-mini-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--clay-shadow-card-elevated);
+}
+
+.clay-report-mini-card.active {
+  background: var(--clay-pistachio);
+  border-color: var(--clay-sage);
+  box-shadow: 
+    5px 8px 18px rgba(45, 65, 40, 0.12),
+    inset 2px 2px 4px rgba(255, 255, 255, 0.9);
+}
+
+.clay-report-thumb {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--clay-radius-sm);
+  object-fit: cover;
+  border: 1.5px solid rgba(255, 255, 255, 0.95);
+  box-shadow: var(--clay-shadow-button-sm);
+  flex-shrink: 0;
+}
+
+.clay-report-meta {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.clay-report-mini-title {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--clay-text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.clay-report-mini-sub {
+  font-size: 0.76rem;
+  color: var(--clay-text-secondary);
+}
+
+.clay-report-mini-badge {
+  font-size: 0.72rem;
+  font-weight: 800;
+  padding: 0.2rem 0.55rem;
+  border-radius: var(--clay-radius-pill);
+  background: var(--clay-bg-elevated);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  color: var(--clay-olive);
+  box-shadow: var(--clay-shadow-button-sm);
+}
+
+/* ==========================================================================
+   Clinical Pathology Certificate Card (Right Detail Pane)
+   ========================================================================== */
+.clay-certificate-sheet {
+  background: var(--clay-bg-card);
+  border: 2px solid rgba(255, 255, 255, 0.95);
+  border-radius: var(--clay-radius-xl);
+  box-shadow: var(--clay-shadow-card-elevated);
+  padding: 2.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Official Header Ribbon */
+.clay-cert-ribbon {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1.5px dashed rgba(143, 166, 131, 0.3);
+}
+
+.clay-cert-id-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: var(--clay-olive);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  background: var(--clay-pistachio);
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--clay-radius-pill);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+}
+
+.clay-cert-stamp {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #1b6330;
+  background: var(--clay-mint);
+  padding: 0.3rem 0.75rem;
+  border-radius: var(--clay-radius-pill);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow: var(--clay-shadow-button-sm);
+}
+
+/* Hero Diagnostic Headline */
+.clay-cert-title-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.clay-cert-title-group h2 {
+  font-size: 1.85rem;
+  font-weight: 800;
+  color: var(--clay-text-primary);
+  margin: 0 0 0.35rem;
+  letter-spacing: -0.02em;
+}
+
+.clay-cert-subtitle {
+  font-size: 0.9rem;
+  color: var(--clay-text-secondary);
+  margin: 0;
+  font-style: italic;
+}
+
+/* Specimen Inspection Row */
+.clay-specimen-grid {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 1.75rem;
+  align-items: center;
+  background: var(--clay-bg-inset);
+  padding: 1.35rem;
+  border-radius: var(--clay-radius-lg);
+  box-shadow: var(--clay-shadow-inset);
+}
+
+.clay-specimen-img-frame {
+  width: 100%;
+  height: 140px;
+  border-radius: var(--clay-radius-md);
+  overflow: hidden;
+  border: 2px solid rgba(255, 255, 255, 0.95);
+  box-shadow: var(--clay-shadow-card);
+}
+
+.clay-specimen-img-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.clay-specimen-metrics {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.clay-metrics-headline {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.clay-metrics-headline strong {
+  font-size: 0.95rem;
+  color: var(--clay-text-primary);
+}
+
+.clay-metrics-headline span {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--clay-olive);
+}
+
+.clay-metrics-bar-track {
+  width: 100%;
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(143, 166, 131, 0.2);
+  overflow: hidden;
+}
+
+.clay-metrics-bar-fill {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--clay-sage) 0%, var(--clay-olive) 100%);
+}
+
+.clay-specimen-note {
+  font-size: 0.8rem;
+  color: var(--clay-text-muted);
+  margin: 0;
+}
+
+/* Symptoms Matrix */
+.clay-cert-section-card {
+  padding: 1.25rem 1.5rem;
+  border-radius: var(--clay-radius-lg);
+  background: var(--clay-bg-elevated);
+  border: 1.5px solid rgba(255, 255, 255, 0.95);
+  box-shadow: var(--clay-shadow-card);
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.clay-cert-section-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.92rem;
+  font-weight: 800;
+  color: var(--clay-text-primary);
+  margin: 0;
+}
+
+.clay-symptoms-list {
+  padding-left: 1.2rem;
+  margin: 0;
+  font-size: 0.86rem;
+  color: var(--clay-text-secondary);
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  line-height: 1.45;
+}
+
+/* Two-Column Remediation Protocols */
+.clay-protocol-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+
+.clay-protocol-card {
+  padding: 1.25rem;
+  border-radius: var(--clay-radius-lg);
+  border: 1.5px solid rgba(255, 255, 255, 0.95);
+  box-shadow: var(--clay-shadow-card);
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.clay-protocol-card.organic {
+  background: var(--clay-mint-soft);
+}
+
+.clay-protocol-card.chemical {
+  background: var(--clay-peach);
+}
+
+.clay-protocol-header {
+  font-size: 0.9rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.clay-protocol-card.organic .clay-protocol-header {
+  color: #14532d;
+}
+
+.clay-protocol-card.chemical .clay-protocol-header {
+  color: #9a3412;
+}
+
+.clay-protocol-items {
+  padding-left: 1.2rem;
+  margin: 0;
+  font-size: 0.82rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  line-height: 1.4;
+}
+
+.clay-protocol-card.organic .clay-protocol-items {
+  color: #166534;
+}
+
+.clay-protocol-card.chemical .clay-protocol-items {
+  color: #7c2d12;
+}
+
+/* Prevention Guidance Card */
+.clay-prevention-card {
+  padding: 1.25rem 1.5rem;
+  border-radius: var(--clay-radius-lg);
+  background: var(--clay-pistachio);
+  border: 1.5px solid rgba(255, 255, 255, 0.95);
+  box-shadow: var(--clay-shadow-card);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.clay-prevention-card h4 {
+  font-size: 0.9rem;
+  font-weight: 800;
+  color: var(--clay-olive);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.clay-prevention-card p {
+  font-size: 0.85rem;
+  color: var(--clay-text-primary);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Certificate Sign-off Footer */
+.clay-cert-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding-top: 1.25rem;
+  border-top: 1.5px dashed rgba(143, 166, 131, 0.3);
+}
+
+.clay-cert-signoff {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.clay-cert-seal-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: var(--clay-bg-elevated);
+  border: 2px solid rgba(255, 255, 255, 0.95);
+  box-shadow: var(--clay-shadow-circle);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--clay-olive);
+}
+
+.clay-cert-signoff-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.clay-cert-authority {
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: var(--clay-text-primary);
+}
+
+.clay-cert-hash {
+  font-size: 0.72rem;
+  color: var(--clay-text-muted);
+  font-family: monospace;
+}
+
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  .clay-certificate-sheet,
+  .clay-certificate-sheet * {
+    visibility: visible;
+  }
+  .clay-certificate-sheet {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    border: none !important;
+    box-shadow: none !important;
+    background: #ffffff !important;
+  }
+}
+
+@media (max-width: 960px) {
+  .clay-reports-workspace {
+    grid-template-columns: 1fr;
+  }
+  .clay-protocol-grid {
+    grid-template-columns: 1fr;
+  }
+  .clay-specimen-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .clay-reports-header {
+    padding: 1rem 1.25rem;
+    gap: 0.85rem;
+  }
+
+  .clay-reports-title-row h1 {
+    font-size: 1.35rem;
+  }
+
+  .clay-reports-header-actions {
+    width: 100%;
+  }
+
+  .clay-reports-header-actions .clay-btn {
+    flex: 1;
+    justify-content: center;
+    padding: 0.55rem 0.85rem;
+    font-size: 0.8rem;
+  }
+
+  .clay-reports-scroll-body {
+    padding: 1rem 1.25rem 2.5rem;
+  }
+
+  .clay-certificate-sheet {
+    padding: 1.25rem;
+    border-radius: 20px;
+    gap: 1.15rem;
+  }
+
+  .clay-cert-title-group h2 {
+    font-size: 1.35rem;
+  }
+
+  .clay-cert-footer {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+  }
+
+  .clay-cert-footer > div:last-child {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .clay-cert-footer button {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
